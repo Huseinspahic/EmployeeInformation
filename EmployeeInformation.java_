@@ -1,0 +1,95 @@
+/*
+Name:  Ahmed Huseinspahic
+Class: Programming Fundamentals Section 12
+
+*/
+import java.util.Scanner;
+
+public class EmployeeInformation {
+
+    public static void main(String[] args) {
+
+        Scanner scan = new Scanner(System.in);
+
+        int employeeNumber = 1;
+        double hoursWorked, grossPay, totalPay, deduction, count = 0;
+        double hourPay = 8.25;
+        double deductionOne = 0.01;
+        double deductionFive = 0.05;
+        double deductionEight = 0.08;
+
+        //while method (quit)
+
+        while (employeeNumber != 0) {
+
+            count++;
+
+            System.out.print("Enter Employee Number (0 to quit): ");
+            employeeNumber = scan.nextInt();
+
+            if (employeeNumber == 0) {
+                break;
+            }
+
+            System.out.println();
+
+            //Enter Amount of Hours Worked
+
+            System.out.println("Enter amount of hours worked: ");
+            hoursWorked = scan.nextDouble();
+
+            //Calculate Gross Pay
+
+            grossPay = hourPay * hoursWorked;
+            //TablePrint
+
+            System.out.printf("%-10s  |  %8s  |  %-8s  |  %10s  |  %5s%n",
+                "EmployeeNumber",
+                "HoursWorked",
+                "GrossPay",
+                "DeductionAmount",
+                "NetPay");
+
+
+            //<$50
+
+            if (grossPay < 50) {
+                deduction = deductionOne * grossPay;
+                totalPay = grossPay - deduction;
+                System.out.printf("%-14s  |  %11s  |  %-8s  |  %15s  |  %5s%n",
+                    employeeNumber,
+                    hoursWorked,
+                    "$"+grossPay,
+                    "-$"+deduction,
+                    "$"+totalPay);
+            }
+
+            //Greater than or equal to $50 but less than $200
+            else if (grossPay >= 50 && grossPay < 200) {
+                deduction = deductionFive * grossPay;
+                totalPay = grossPay - deduction;
+                System.out.printf("%-14s  |  %11s  |  %-8s  |  %15s  |  %5s%n",
+                    employeeNumber,
+                    hoursWorked,
+                    "$"+grossPay,
+                    "-$"+deduction,
+                    "$"+totalPay);
+            }
+
+            //>=200
+            else if (grossPay >= 200) {
+                deduction = deductionEight * grossPay;
+                totalPay = grossPay - deduction;
+                System.out.printf("%-14s  |  %11s  |  %-8s  |  %15s  |  %5s%n",
+                    employeeNumber,
+                    hoursWorked,
+                    "$"+grossPay,
+                    "-$"+deduction,
+                    "$"+totalPay);
+            }
+        }
+
+
+
+    }
+}
